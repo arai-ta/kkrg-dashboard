@@ -1,0 +1,24 @@
+{
+  "name": "kkrg-dashboard",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "NODE_ENV=${NODE_ENV:-development} dashbling start",
+    "build": "dashbling compile"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "browserslist": "last 2 versions",
+  "devDependencies": {
+    "@dashbling/build-support": "^0"
+  },
+  "dependencies": {
+    "react": "^16.2",
+    "react-dom": "^16.2",
+    "@dashbling/core": "^0",
+    "@dashbling/client": "^0",
+    "dashbling-widget-weather": "^2.0.0"
+  }
+}
