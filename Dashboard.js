@@ -21,7 +21,7 @@ export default props => {
         timezone="Europe/Amsterdam"
         backgroundColor="#00865A"
       />
-      <BoundHelloWidget />
+      <BoundHelloWidget name="arai-ta"/>
 
       <WeatherInAmsterdam title="Amsterdam" />
       <DashblingGitHubStars />
