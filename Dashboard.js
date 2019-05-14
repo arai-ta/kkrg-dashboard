@@ -23,7 +23,6 @@ export default props => {
         timezone="Europe/Amsterdam"
         backgroundColor="#00865A"
       />
-      <Image src="https://static.tenki.jp/static-images/radar/2019/05/13/00/05/00/pref-22-large.jpg" />
       <BoundHelloWidget name="arai-ta"/>
       <TenkiJp name="Yamanashi" pref="22" date={new Date} />
 
