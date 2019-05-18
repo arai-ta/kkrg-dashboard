@@ -24,7 +24,7 @@ export default props => {
         backgroundColor="#00865A"
       />
       <BoundHelloWidget name="arai-ta"/>
-      <TenkiJpMap name="Yamanashi" pref="22" />
+      <TenkiJpMap pref="22" />
 
       <WeatherInAmsterdam title="Amsterdam" />
       <DashblingGitHubStars />
