@@ -7,13 +7,13 @@ import { HelloWidget } from "./widgets/HelloWidget";
 import { GitHubStars } from "./widgets/gitHubStars/GitHubStars";
 import { CircleCiStatus } from "./widgets/circleCi/CircleCiStatus";
 import { WeatherWidget } from "dashbling-widget-weather";
-import { TenkiJpWidget } from "./widgets/TenkiJpWidget";
+import { TenkiJpMapWidget } from "./widgets/TenkiJpMapWidget";
 
 const DashblingGitHubStars = connect("github-stars-dashbling")(GitHubStars);
 const DashblingCiStatus = connect("dashbling-ci-status")(CircleCiStatus);
 const WeatherInAmsterdam = connect("weather-amsterdam")(WeatherWidget);
 const BoundHelloWidget = connect("hello")(HelloWidget);
-const TenkiJp = connect("tenki-jp")(TenkiJpWidget);
+const TenkiJpMap = connect("tenki-jp")(TenkiJpMapWidget);
 
 export default props => {
   return (
@@ -24,7 +24,7 @@ export default props => {
         backgroundColor="#00865A"
       />
       <BoundHelloWidget name="arai-ta"/>
-      <TenkiJp name="Yamanashi" pref="22" date={new Date} />
+      <TenkiJpMap name="Yamanashi" pref="22" />
 
       <WeatherInAmsterdam title="Amsterdam" />
       <DashblingGitHubStars />
