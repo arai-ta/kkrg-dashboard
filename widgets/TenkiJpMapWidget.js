@@ -1,16 +1,18 @@
 import React from "react";
 import { Widget, SmallLabel } from "@dashbling/client/Widget";
 import { Image } from "@dashbling/client/widgets";
+import { subHours, subMinutes, addMinutes } from "date-fns";
 
 const pad = (num) => num.toString().padStart(2, "0");
 
 // https://static.tenki.jp/static-images/radar/2019/05/13/00/05/00/pref-22-large.jpg
 const getUrl = (pref, date) => {
-    let year    = date.getFullYear(),
-        month   = pad(date.getMonth() + 1),
-        day     = pad(date.getDate()),
-        hour    = pad(date.getHours()),
-        min     = pad(5 * Math.floor((date.getMinutes() - 1) / 5)); // BUG: x:00 not working
+    let d       = subMinutes(date, 1),
+        year    = d.getFullYear(),
+        month   = pad(d.getMonth() + 1),
+        day     = pad(d.getDate()),
+        hour    = pad(d.getHours()),
+        min     = pad(5 * Math.floor(d.getMinutes() / 5));
     return `https://static.tenki.jp/static-images/radar/${year}/${month}/${day}/${hour}/${min}/00/pref-${pref}-large.jpg`;
 }
 
@@ -18,8 +20,7 @@ export class TenkiJpMapWidget extends React.Component {
     constructor(props) {
         super(props);
 
-        let startDate = new Date;
-        startDate.setHours(startDate.getHours() - 1); // 1 hours before
+        let startDate = subHours(props.date || new Date, 1); // 1 hours before
 
         this.state = {
             name:   props.name || "Rain Map",
@@ -27,7 +28,7 @@ export class TenkiJpMapWidget extends React.Component {
             interval: props.interval || 3000,
             end:    new Date,
             start:  startDate,
-            date:   new Date(startDate.getTime()),
+            date:   startDate,
             index:  0
         };
     }
@@ -36,9 +37,8 @@ export class TenkiJpMapWidget extends React.Component {
         this.setState(state => {
             if (state.end - state.date > 0) {
                 // increment
-                state.date.setMinutes(state.date.getMinutes() + 5); // 5 min after
                 return {
-                    date: new Date(state.date.getTime()),
+                    date: addMinutes(state.date, 5), // 5 min after
                     index: state.index + 1
                 };
             } else {
